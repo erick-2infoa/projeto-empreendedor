@@ -32,12 +32,12 @@ public class produto {
     private BigDecimal preco;
 
     @ManyToMany(mappedBy = "produtos")
-    private List<empreendedor> empreendedores = new ArrayList<>();
+    private List<Empreendedor> empreendedores = new ArrayList<>();
 
     public produto() {
     }
 
-    public produto(Integer id, String nome, LocalDate dataFabricacao, BigDecimal preco, List<empreendedor> empreendedores) {
+    public produto(Integer id, String nome, LocalDate dataFabricacao, BigDecimal preco, List<Empreendedor> empreendedores) {
         this.id = id;
         this.nome = nome;
         this.dataFabricacao = dataFabricacao;
@@ -77,11 +77,11 @@ public class produto {
         this.preco = preco;
     }
 
-    public List<empreendedor> getEmpreendedores() {
+    public List<Empreendedor> getEmpreendedores() {
         return empreendedores;
     }
 
-    public void setEmpreendedores(List<empreendedor> empreendedores) {
+    public void setEmpreendedores(List<Empreendedor> empreendedores) {
         this.empreendedores = empreendedores;
     }
 }

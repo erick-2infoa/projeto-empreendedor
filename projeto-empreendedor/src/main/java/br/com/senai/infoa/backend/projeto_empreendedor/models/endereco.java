@@ -29,12 +29,12 @@ public class endereco {
 
     @ManyToOne
     @JoinColumn(name = "empreendedorId")
-    private empreendedor empreendedor;
+    private Empreendedor empreendedor;
 
     public endereco() {
     }
 
-    public endereco(Integer id, String cep, String numero, String logradouro, empreendedor empreendedor) {
+    public endereco(Integer id, String cep, String numero, String logradouro, Empreendedor empreendedor) {
         this.id = id;
         this.cep = cep;
         this.numero = numero;
@@ -74,11 +74,11 @@ public class endereco {
         this.logradouro = logradouro;
     }
 
-    public empreendedor getEmpreendedor() {
+    public Empreendedor getEmpreendedor() {
         return empreendedor;
     }
 
-    public void setEmpreendedor(empreendedor empreendedor) {
+    public void setEmpreendedor(Empreendedor empreendedor) {
         this.empreendedor = empreendedor;
     }
 }

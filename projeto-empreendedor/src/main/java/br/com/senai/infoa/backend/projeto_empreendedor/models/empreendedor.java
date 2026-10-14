@@ -17,7 +17,7 @@ import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "empreendedor")
-public class empreendedor {
+public class Empreendedor {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -44,10 +44,10 @@ public class empreendedor {
     )
     private List<produto> produtos = new ArrayList<>();
 
-    public empreendedor() {
+    public Empreendedor() {
     }
 
-    public empreendedor(Integer id, String nome, String cpf, LocalDate dataNascimento, List<endereco> enderecos, List<produto> produtos) {
+    public Empreendedor(Integer id, String nome, String cpf, LocalDate dataNascimento, List<endereco> enderecos, List<produto> produtos) {
         this.id = id;
         this.nome = nome;
         this.cpf = cpf;
