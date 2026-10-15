@@ -5,13 +5,17 @@ import org.springframework.stereotype.Service;
 
 import br.com.senai.infoa.backend.projeto_empreendedor.repositories.EmpreendedorRepository;
 
-@Service
+@Service 
 public class EmpreendedorService {
-
-    @Autowired
+    
+    @Autowired 
     private EmpreendedorRepository empreendedorRepository;
 
     public Long contar() {
         return empreendedorRepository.count();
+    }
+
+    public EmpreendedorService(EmpreendedorRepository empreendedorRepository) {
+        this.empreendedorRepository = empreendedorRepository;
     }
 }

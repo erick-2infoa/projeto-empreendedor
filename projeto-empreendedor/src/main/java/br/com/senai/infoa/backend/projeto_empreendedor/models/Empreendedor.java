@@ -4,10 +4,10 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
@@ -16,44 +16,39 @@ import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "empreendedor")
+@Table (name = "Empreendedor")
 public class Empreendedor {
-
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
+    @GeneratedValue(strategy = jakarta.persistence.GenerationType.IDENTITY)
+    @Column (name = "id")
     private Integer id;
 
-    @Column(name = "nome")
-    private String nome;
-
-    @Column(name = "cpf")
+    @Column (name = "cpf")
     private String cpf;
 
-    @Column(name = "data_nascimento")
+    @Column (name = "dataNascimento")
     private LocalDate dataNascimento;
 
-    @OneToMany(mappedBy = "empreendedor")
-    private List<endereco> enderecos = new ArrayList<>();
+    @OneToMany(mappedBy = "empreendedor", cascade = CascadeType.ALL)
+    private List<Endereco> Endereco = new ArrayList<>();
 
     @ManyToMany
-    @JoinTable(
-        name = "empreendedor_produto",
+    @JoinTable (
+        name = "empreendedorProduto",
         joinColumns = @JoinColumn(name = "empreendedorId"),
         inverseJoinColumns = @JoinColumn(name = "produtoId")
     )
-    private List<produto> produtos = new ArrayList<>();
+    private List<Produto> produtos;
 
     public Empreendedor() {
     }
 
-    public Empreendedor(Integer id, String nome, String cpf, LocalDate dataNascimento, List<endereco> enderecos, List<produto> produtos) {
-        this.id = id;
-        this.nome = nome;
+    public Empreendedor(String cpf, LocalDate dataNascimento, Integer id, List<Produto> produtos, List<Endereco> Endereco) {
         this.cpf = cpf;
         this.dataNascimento = dataNascimento;
-        this.enderecos = enderecos;
+        this.id = id;
         this.produtos = produtos;
+        this.Endereco = Endereco;
     }
 
     public Integer getId() {
@@ -62,14 +57,6 @@ public class Empreendedor {
 
     public void setId(Integer id) {
         this.id = id;
-    }
-
-    public String getNome() {
-        return nome;
-    }
-
-    public void setNome(String nome) {
-        this.nome = nome;
     }
 
     public String getCpf() {
@@ -88,19 +75,19 @@ public class Empreendedor {
         this.dataNascimento = dataNascimento;
     }
 
-    public List<endereco> getEnderecos() {
-        return enderecos;
+    public List<Endereco> getEndereco() {
+        return Endereco;
     }
 
-    public void setEnderecos(List<endereco> enderecos) {
-        this.enderecos = enderecos;
+    public void setEndereco(List<Endereco> Endereco) {
+        this.Endereco = Endereco;
     }
 
-    public List<produto> getProdutos() {
+    public List<Produto> getProdutos() {
         return produtos;
     }
 
-    public void setProdutos(List<produto> produtos) {
+    public void setProdutos(List<Produto> produtos) {
         this.produtos = produtos;
     }
 }

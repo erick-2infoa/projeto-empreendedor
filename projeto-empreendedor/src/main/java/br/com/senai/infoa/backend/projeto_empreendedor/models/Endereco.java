@@ -10,8 +10,8 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "endereco")
-public class endereco {
+@Table(name = "Endereco")
+public class Endereco {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -22,24 +22,24 @@ public class endereco {
     private String cep;
 
     @Column(name = "numero")
-    private String numero;
+    private Integer numero;
 
-    @Column(name = "logradouro")
-    private String logradouro;
+    @Column(name = "longradouro")
+    private String longradouro;
 
     @ManyToOne
     @JoinColumn(name = "empreendedorId")
     private Empreendedor empreendedor;
 
-    public endereco() {
+    public Endereco() {
     }
 
-    public endereco(Integer id, String cep, String numero, String logradouro, Empreendedor empreendedor) {
-        this.id = id;
+    public Endereco(String cep, Empreendedor empreendedor, Integer id, String longradouro, Integer numero) {
         this.cep = cep;
-        this.numero = numero;
-        this.logradouro = logradouro;
         this.empreendedor = empreendedor;
+        this.id = id;
+        this.longradouro = longradouro;
+        this.numero = numero;
     }
 
     public Integer getId() {
@@ -58,20 +58,20 @@ public class endereco {
         this.cep = cep;
     }
 
-    public String getNumero() {
+    public Integer getNumero() {
         return numero;
     }
 
-    public void setNumero(String numero) {
+    public void setNumero(Integer numero) {
         this.numero = numero;
     }
 
-    public String getLogradouro() {
-        return logradouro;
+    public String getLongradouro() {
+        return longradouro;
     }
 
-    public void setLogradouro(String logradouro) {
-        this.logradouro = logradouro;
+    public void setLongradouro(String longradouro) {
+        this.longradouro = longradouro;
     }
 
     public Empreendedor getEmpreendedor() {
@@ -81,4 +81,5 @@ public class endereco {
     public void setEmpreendedor(Empreendedor empreendedor) {
         this.empreendedor = empreendedor;
     }
+
 }
