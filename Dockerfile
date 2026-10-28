@@ -12,9 +12,9 @@ ENV MAVEN_HOME=/opt/maven
 ENV PATH=$MAVEN_HOME/bin:$PATH
 COPY pom.xml .
 RUN mvn dependency:go-offline -B || true
-COPY projeto-empreendedor/src
+COPY src ./src
 RUN mvn clean package -DskipTests
-FROM eclipse-temurin:23-jre
+FROM eclipse-temurin:25-jre
 WORKDIR /app
 COPY --from=build /app/target/*.jar app.jar
 EXPOSE 8080
